@@ -27,18 +27,18 @@ Partial Class MainForm
         Me.FichierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.img_Carte = New System.Windows.Forms.PictureBox()
         Me.grpStation = New System.Windows.Forms.GroupBox()
-        Me.lbDate = New System.Windows.Forms.Label()
-        Me.tbDate = New System.Windows.Forms.TextBox()
-        Me.tbTemp = New System.Windows.Forms.TextBox()
-        Me.lbTemp = New System.Windows.Forms.Label()
-        Me.tbPression = New System.Windows.Forms.TextBox()
-        Me.lbPression = New System.Windows.Forms.Label()
-        Me.tbDirVent = New System.Windows.Forms.TextBox()
-        Me.lbDirVent = New System.Windows.Forms.Label()
+        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
         Me.tbForceVent = New System.Windows.Forms.TextBox()
         Me.lbForceVent = New System.Windows.Forms.Label()
-        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.tbDirVent = New System.Windows.Forms.TextBox()
+        Me.lbDirVent = New System.Windows.Forms.Label()
+        Me.tbPression = New System.Windows.Forms.TextBox()
+        Me.lbPression = New System.Windows.Forms.Label()
+        Me.tbTemp = New System.Windows.Forms.TextBox()
+        Me.lbTemp = New System.Windows.Forms.Label()
+        Me.tbDate = New System.Windows.Forms.TextBox()
+        Me.lbDate = New System.Windows.Forms.Label()
         Me.Menu.SuspendLayout()
         CType(Me.img_Carte, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpStation.SuspendLayout()
@@ -85,84 +85,25 @@ Partial Class MainForm
         Me.grpStation.Controls.Add(Me.tbDate)
         Me.grpStation.Controls.Add(Me.lbDate)
         Me.grpStation.Dock = System.Windows.Forms.DockStyle.Right
-        Me.grpStation.Location = New System.Drawing.Point(921, 24)
+        Me.grpStation.Location = New System.Drawing.Point(953, 24)
         Me.grpStation.Name = "grpStation"
-        Me.grpStation.Size = New System.Drawing.Size(283, 759)
+        Me.grpStation.Size = New System.Drawing.Size(251, 759)
         Me.grpStation.TabIndex = 2
         Me.grpStation.TabStop = False
         Me.grpStation.Text = "Station"
         '
-        'lbDate
+        'NumericUpDown1
         '
-        Me.lbDate.AutoSize = True
-        Me.lbDate.Location = New System.Drawing.Point(7, 20)
-        Me.lbDate.Name = "lbDate"
-        Me.lbDate.Size = New System.Drawing.Size(68, 13)
-        Me.lbDate.TabIndex = 0
-        Me.lbDate.Text = "Date - Heure"
+        Me.NumericUpDown1.Location = New System.Drawing.Point(185, 195)
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(53, 20)
+        Me.NumericUpDown1.TabIndex = 11
         '
-        'tbDate
+        'MonthCalendar1
         '
-        Me.tbDate.Location = New System.Drawing.Point(117, 17)
-        Me.tbDate.Name = "tbDate"
-        Me.tbDate.Size = New System.Drawing.Size(152, 20)
-        Me.tbDate.TabIndex = 1
-        Me.tbDate.Text = "xx/xx/20xx - hh:mm:ss"
-        Me.tbDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'tbTemp
-        '
-        Me.tbTemp.Location = New System.Drawing.Point(117, 43)
-        Me.tbTemp.Name = "tbTemp"
-        Me.tbTemp.Size = New System.Drawing.Size(79, 20)
-        Me.tbTemp.TabIndex = 3
-        Me.tbTemp.Text = "xx.x °C"
-        Me.tbTemp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lbTemp
-        '
-        Me.lbTemp.AutoSize = True
-        Me.lbTemp.Location = New System.Drawing.Point(7, 46)
-        Me.lbTemp.Name = "lbTemp"
-        Me.lbTemp.Size = New System.Drawing.Size(67, 13)
-        Me.lbTemp.TabIndex = 2
-        Me.lbTemp.Text = "Température"
-        '
-        'tbPression
-        '
-        Me.tbPression.Location = New System.Drawing.Point(117, 69)
-        Me.tbPression.Name = "tbPression"
-        Me.tbPression.Size = New System.Drawing.Size(79, 20)
-        Me.tbPression.TabIndex = 5
-        Me.tbPression.Text = "xxxx.x hpa"
-        Me.tbPression.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lbPression
-        '
-        Me.lbPression.AutoSize = True
-        Me.lbPression.Location = New System.Drawing.Point(7, 72)
-        Me.lbPression.Name = "lbPression"
-        Me.lbPression.Size = New System.Drawing.Size(47, 13)
-        Me.lbPression.TabIndex = 4
-        Me.lbPression.Text = "Pression"
-        '
-        'tbDirVent
-        '
-        Me.tbDirVent.Location = New System.Drawing.Point(117, 95)
-        Me.tbDirVent.Name = "tbDirVent"
-        Me.tbDirVent.Size = New System.Drawing.Size(79, 20)
-        Me.tbDirVent.TabIndex = 7
-        Me.tbDirVent.Text = "xxxx.x hpa"
-        Me.tbDirVent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lbDirVent
-        '
-        Me.lbDirVent.AutoSize = True
-        Me.lbDirVent.Location = New System.Drawing.Point(7, 98)
-        Me.lbDirVent.Name = "lbDirVent"
-        Me.lbDirVent.Size = New System.Drawing.Size(88, 13)
-        Me.lbDirVent.TabIndex = 6
-        Me.lbDirVent.Text = "Direction du vent"
+        Me.MonthCalendar1.Location = New System.Drawing.Point(12, 227)
+        Me.MonthCalendar1.Name = "MonthCalendar1"
+        Me.MonthCalendar1.TabIndex = 10
         '
         'tbForceVent
         '
@@ -182,18 +123,77 @@ Partial Class MainForm
         Me.lbForceVent.TabIndex = 8
         Me.lbForceVent.Text = "Force du vent"
         '
-        'MonthCalendar1
+        'tbDirVent
         '
-        Me.MonthCalendar1.Location = New System.Drawing.Point(12, 227)
-        Me.MonthCalendar1.Name = "MonthCalendar1"
-        Me.MonthCalendar1.TabIndex = 10
+        Me.tbDirVent.Location = New System.Drawing.Point(117, 95)
+        Me.tbDirVent.Name = "tbDirVent"
+        Me.tbDirVent.Size = New System.Drawing.Size(79, 20)
+        Me.tbDirVent.TabIndex = 7
+        Me.tbDirVent.Text = "xxxx.x hpa"
+        Me.tbDirVent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'NumericUpDown1
+        'lbDirVent
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(185, 195)
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(53, 20)
-        Me.NumericUpDown1.TabIndex = 11
+        Me.lbDirVent.AutoSize = True
+        Me.lbDirVent.Location = New System.Drawing.Point(7, 98)
+        Me.lbDirVent.Name = "lbDirVent"
+        Me.lbDirVent.Size = New System.Drawing.Size(88, 13)
+        Me.lbDirVent.TabIndex = 6
+        Me.lbDirVent.Text = "Direction du vent"
+        '
+        'tbPression
+        '
+        Me.tbPression.Location = New System.Drawing.Point(117, 69)
+        Me.tbPression.Name = "tbPression"
+        Me.tbPression.Size = New System.Drawing.Size(79, 20)
+        Me.tbPression.TabIndex = 5
+        Me.tbPression.Text = "xxxx.x hpa"
+        Me.tbPression.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lbPression
+        '
+        Me.lbPression.AutoSize = True
+        Me.lbPression.Location = New System.Drawing.Point(7, 72)
+        Me.lbPression.Name = "lbPression"
+        Me.lbPression.Size = New System.Drawing.Size(47, 13)
+        Me.lbPression.TabIndex = 4
+        Me.lbPression.Text = "Pression"
+        '
+        'tbTemp
+        '
+        Me.tbTemp.Location = New System.Drawing.Point(117, 43)
+        Me.tbTemp.Name = "tbTemp"
+        Me.tbTemp.Size = New System.Drawing.Size(79, 20)
+        Me.tbTemp.TabIndex = 3
+        Me.tbTemp.Text = "xx.x °C"
+        Me.tbTemp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lbTemp
+        '
+        Me.lbTemp.AutoSize = True
+        Me.lbTemp.Location = New System.Drawing.Point(7, 46)
+        Me.lbTemp.Name = "lbTemp"
+        Me.lbTemp.Size = New System.Drawing.Size(67, 13)
+        Me.lbTemp.TabIndex = 2
+        Me.lbTemp.Text = "Température"
+        '
+        'tbDate
+        '
+        Me.tbDate.Location = New System.Drawing.Point(117, 17)
+        Me.tbDate.Name = "tbDate"
+        Me.tbDate.Size = New System.Drawing.Size(152, 20)
+        Me.tbDate.TabIndex = 1
+        Me.tbDate.Text = "xx/xx/20xx - hh:mm:ss"
+        Me.tbDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lbDate
+        '
+        Me.lbDate.AutoSize = True
+        Me.lbDate.Location = New System.Drawing.Point(7, 20)
+        Me.lbDate.Name = "lbDate"
+        Me.lbDate.Size = New System.Drawing.Size(68, 13)
+        Me.lbDate.TabIndex = 0
+        Me.lbDate.Text = "Date - Heure"
         '
         'MainForm
         '
