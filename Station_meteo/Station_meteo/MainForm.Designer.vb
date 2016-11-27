@@ -37,9 +37,12 @@ Partial Class MainForm
         Me.lbDirVent = New System.Windows.Forms.Label()
         Me.tbForceVent = New System.Windows.Forms.TextBox()
         Me.lbForceVent = New System.Windows.Forms.Label()
+        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
+        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Menu.SuspendLayout()
         CType(Me.img_Carte, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpStation.SuspendLayout()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Menu
@@ -69,6 +72,8 @@ Partial Class MainForm
         '
         'grpStation
         '
+        Me.grpStation.Controls.Add(Me.NumericUpDown1)
+        Me.grpStation.Controls.Add(Me.MonthCalendar1)
         Me.grpStation.Controls.Add(Me.tbForceVent)
         Me.grpStation.Controls.Add(Me.lbForceVent)
         Me.grpStation.Controls.Add(Me.tbDirVent)
@@ -79,9 +84,10 @@ Partial Class MainForm
         Me.grpStation.Controls.Add(Me.lbTemp)
         Me.grpStation.Controls.Add(Me.tbDate)
         Me.grpStation.Controls.Add(Me.lbDate)
-        Me.grpStation.Location = New System.Drawing.Point(763, 27)
+        Me.grpStation.Dock = System.Windows.Forms.DockStyle.Right
+        Me.grpStation.Location = New System.Drawing.Point(921, 24)
         Me.grpStation.Name = "grpStation"
-        Me.grpStation.Size = New System.Drawing.Size(283, 324)
+        Me.grpStation.Size = New System.Drawing.Size(283, 759)
         Me.grpStation.TabIndex = 2
         Me.grpStation.TabStop = False
         Me.grpStation.Text = "Station"
@@ -176,6 +182,19 @@ Partial Class MainForm
         Me.lbForceVent.TabIndex = 8
         Me.lbForceVent.Text = "Force du vent"
         '
+        'MonthCalendar1
+        '
+        Me.MonthCalendar1.Location = New System.Drawing.Point(12, 227)
+        Me.MonthCalendar1.Name = "MonthCalendar1"
+        Me.MonthCalendar1.TabIndex = 10
+        '
+        'NumericUpDown1
+        '
+        Me.NumericUpDown1.Location = New System.Drawing.Point(185, 195)
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(53, 20)
+        Me.NumericUpDown1.TabIndex = 11
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -196,6 +215,7 @@ Partial Class MainForm
         CType(Me.img_Carte, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpStation.ResumeLayout(False)
         Me.grpStation.PerformLayout()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -215,4 +235,6 @@ Partial Class MainForm
     Friend WithEvents lbForceVent As Label
     Friend WithEvents tbDirVent As TextBox
     Friend WithEvents lbDirVent As Label
+    Friend WithEvents MonthCalendar1 As MonthCalendar
+    Friend WithEvents NumericUpDown1 As NumericUpDown
 End Class
