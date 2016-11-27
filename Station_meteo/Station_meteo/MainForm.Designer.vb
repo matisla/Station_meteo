@@ -26,6 +26,7 @@ Partial Class MainForm
         Me.mainMenu = New System.Windows.Forms.MenuStrip()
         Me.FichierMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.grpStation = New System.Windows.Forms.GroupBox()
+        Me.cbStation = New System.Windows.Forms.ComboBox()
         Me.grpData = New System.Windows.Forms.GroupBox()
         Me.tbTemp = New System.Windows.Forms.TextBox()
         Me.lbTemp = New System.Windows.Forms.Label()
@@ -40,12 +41,17 @@ Partial Class MainForm
         Me.lbHeure = New System.Windows.Forms.Label()
         Me.numHeure = New System.Windows.Forms.NumericUpDown()
         Me.img_Carte = New System.Windows.Forms.PictureBox()
+        Me.lbStrasbourg = New System.Windows.Forms.Label()
+        Me.grpLog = New System.Windows.Forms.GroupBox()
+        Me.lsbLog = New System.Windows.Forms.ListBox()
+        Me.btClearLog = New System.Windows.Forms.Button()
         Me.mainMenu.SuspendLayout()
         Me.grpStation.SuspendLayout()
         Me.grpData.SuspendLayout()
         Me.grpDateTime.SuspendLayout()
         CType(Me.numHeure, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.img_Carte, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpLog.SuspendLayout()
         Me.SuspendLayout()
         '
         'mainMenu
@@ -53,7 +59,7 @@ Partial Class MainForm
         Me.mainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierMenu})
         Me.mainMenu.Location = New System.Drawing.Point(0, 0)
         Me.mainMenu.Name = "mainMenu"
-        Me.mainMenu.Size = New System.Drawing.Size(1046, 24)
+        Me.mainMenu.Size = New System.Drawing.Size(1050, 24)
         Me.mainMenu.TabIndex = 0
         Me.mainMenu.Text = "MenuStrip1"
         '
@@ -65,16 +71,25 @@ Partial Class MainForm
         '
         'grpStation
         '
+        Me.grpStation.Controls.Add(Me.cbStation)
         Me.grpStation.Controls.Add(Me.grpData)
         Me.grpStation.Controls.Add(Me.grpDateTime)
         Me.grpStation.Location = New System.Drawing.Point(763, 27)
         Me.grpStation.MaximumSize = New System.Drawing.Size(275, 0)
-        Me.grpStation.MinimumSize = New System.Drawing.Size(275, 404)
+        Me.grpStation.MinimumSize = New System.Drawing.Size(275, 427)
         Me.grpStation.Name = "grpStation"
-        Me.grpStation.Size = New System.Drawing.Size(275, 404)
+        Me.grpStation.Size = New System.Drawing.Size(275, 427)
         Me.grpStation.TabIndex = 4
         Me.grpStation.TabStop = False
         Me.grpStation.Text = "Station"
+        '
+        'cbStation
+        '
+        Me.cbStation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbStation.Location = New System.Drawing.Point(12, 19)
+        Me.cbStation.Name = "cbStation"
+        Me.cbStation.Size = New System.Drawing.Size(251, 21)
+        Me.cbStation.TabIndex = 15
         '
         'grpData
         '
@@ -87,7 +102,7 @@ Partial Class MainForm
         Me.grpData.Controls.Add(Me.tbPression)
         Me.grpData.Controls.Add(Me.tbDirVent)
         Me.grpData.Controls.Add(Me.lbDirVent)
-        Me.grpData.Location = New System.Drawing.Point(12, 19)
+        Me.grpData.Location = New System.Drawing.Point(12, 46)
         Me.grpData.Name = "grpData"
         Me.grpData.Padding = New System.Windows.Forms.Padding(3, 9, 3, 3)
         Me.grpData.Size = New System.Drawing.Size(251, 136)
@@ -99,6 +114,7 @@ Partial Class MainForm
         '
         Me.tbTemp.Location = New System.Drawing.Point(110, 19)
         Me.tbTemp.Name = "tbTemp"
+        Me.tbTemp.ReadOnly = True
         Me.tbTemp.Size = New System.Drawing.Size(135, 20)
         Me.tbTemp.TabIndex = 3
         Me.tbTemp.Text = "xx.x °C"
@@ -117,6 +133,7 @@ Partial Class MainForm
         '
         Me.tbForceVent.Location = New System.Drawing.Point(110, 97)
         Me.tbForceVent.Name = "tbForceVent"
+        Me.tbForceVent.ReadOnly = True
         Me.tbForceVent.Size = New System.Drawing.Size(135, 20)
         Me.tbForceVent.TabIndex = 9
         Me.tbForceVent.Text = "xx.x m/s"
@@ -144,6 +161,7 @@ Partial Class MainForm
         '
         Me.tbPression.Location = New System.Drawing.Point(110, 45)
         Me.tbPression.Name = "tbPression"
+        Me.tbPression.ReadOnly = True
         Me.tbPression.Size = New System.Drawing.Size(135, 20)
         Me.tbPression.TabIndex = 5
         Me.tbPression.Text = "xxxx.x hpa"
@@ -153,6 +171,7 @@ Partial Class MainForm
         '
         Me.tbDirVent.Location = New System.Drawing.Point(110, 71)
         Me.tbDirVent.Name = "tbDirVent"
+        Me.tbDirVent.ReadOnly = True
         Me.tbDirVent.Size = New System.Drawing.Size(135, 20)
         Me.tbDirVent.TabIndex = 7
         Me.tbDirVent.Text = "xxxx.x hpa"
@@ -172,7 +191,7 @@ Partial Class MainForm
         Me.grpDateTime.Controls.Add(Me.calendrier)
         Me.grpDateTime.Controls.Add(Me.lbHeure)
         Me.grpDateTime.Controls.Add(Me.numHeure)
-        Me.grpDateTime.Location = New System.Drawing.Point(12, 161)
+        Me.grpDateTime.Location = New System.Drawing.Point(12, 188)
         Me.grpDateTime.Name = "grpDateTime"
         Me.grpDateTime.Size = New System.Drawing.Size(251, 232)
         Me.grpDateTime.TabIndex = 13
@@ -182,21 +201,24 @@ Partial Class MainForm
         'calendrier
         '
         Me.calendrier.Location = New System.Drawing.Point(12, 25)
+        Me.calendrier.MaxDate = New Date(2012, 11, 12, 0, 0, 0, 0)
+        Me.calendrier.MinDate = New Date(2012, 10, 19, 0, 0, 0, 0)
         Me.calendrier.Name = "calendrier"
         Me.calendrier.TabIndex = 10
         '
         'lbHeure
         '
         Me.lbHeure.AutoSize = True
-        Me.lbHeure.Location = New System.Drawing.Point(9, 196)
+        Me.lbHeure.Location = New System.Drawing.Point(6, 196)
         Me.lbHeure.Name = "lbHeure"
-        Me.lbHeure.Size = New System.Drawing.Size(68, 13)
+        Me.lbHeure.Size = New System.Drawing.Size(36, 13)
         Me.lbHeure.TabIndex = 0
-        Me.lbHeure.Text = "Date - Heure"
+        Me.lbHeure.Text = "Heure"
         '
         'numHeure
         '
         Me.numHeure.Location = New System.Drawing.Point(160, 194)
+        Me.numHeure.Maximum = New Decimal(New Integer() {23, 0, 0, 0})
         Me.numHeure.Name = "numHeure"
         Me.numHeure.Size = New System.Drawing.Size(79, 20)
         Me.numHeure.TabIndex = 11
@@ -211,17 +233,60 @@ Partial Class MainForm
         Me.img_Carte.TabIndex = 6
         Me.img_Carte.TabStop = False
         '
+        'lbStrasbourg
+        '
+        Me.lbStrasbourg.AutoSize = True
+        Me.lbStrasbourg.BackColor = System.Drawing.SystemColors.Highlight
+        Me.lbStrasbourg.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbStrasbourg.Location = New System.Drawing.Point(629, 250)
+        Me.lbStrasbourg.Name = "lbStrasbourg"
+        Me.lbStrasbourg.Size = New System.Drawing.Size(81, 18)
+        Me.lbStrasbourg.TabIndex = 7
+        Me.lbStrasbourg.Text = "Strasbourg"
+        '
+        'grpLog
+        '
+        Me.grpLog.Controls.Add(Me.btClearLog)
+        Me.grpLog.Controls.Add(Me.lsbLog)
+        Me.grpLog.Location = New System.Drawing.Point(763, 461)
+        Me.grpLog.Name = "grpLog"
+        Me.grpLog.Size = New System.Drawing.Size(275, 311)
+        Me.grpLog.TabIndex = 8
+        Me.grpLog.TabStop = False
+        Me.grpLog.Text = "Messages"
+        '
+        'lsbLog
+        '
+        Me.lsbLog.Dock = System.Windows.Forms.DockStyle.Top
+        Me.lsbLog.FormattingEnabled = True
+        Me.lsbLog.Location = New System.Drawing.Point(3, 16)
+        Me.lsbLog.Name = "lsbLog"
+        Me.lsbLog.Size = New System.Drawing.Size(269, 290)
+        Me.lsbLog.TabIndex = 0
+        '
+        'btClearLog
+        '
+        Me.btClearLog.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.btClearLog.Location = New System.Drawing.Point(3, 285)
+        Me.btClearLog.Name = "btClearLog"
+        Me.btClearLog.Size = New System.Drawing.Size(269, 23)
+        Me.btClearLog.TabIndex = 1
+        Me.btClearLog.Text = "vider"
+        Me.btClearLog.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1046, 783)
+        Me.ClientSize = New System.Drawing.Size(1050, 783)
+        Me.Controls.Add(Me.grpLog)
+        Me.Controls.Add(Me.lbStrasbourg)
         Me.Controls.Add(Me.img_Carte)
         Me.Controls.Add(Me.grpStation)
         Me.Controls.Add(Me.mainMenu)
         Me.MainMenuStrip = Me.mainMenu
-        Me.MaximumSize = New System.Drawing.Size(1062, 822)
-        Me.MinimumSize = New System.Drawing.Size(1062, 822)
+        Me.MaximumSize = New System.Drawing.Size(1066, 822)
+        Me.MinimumSize = New System.Drawing.Size(1066, 822)
         Me.Name = "MainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Station Météo"
@@ -236,6 +301,7 @@ Partial Class MainForm
         Me.grpDateTime.PerformLayout()
         CType(Me.numHeure, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.img_Carte, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpLog.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -258,4 +324,9 @@ Partial Class MainForm
     Friend WithEvents lbHeure As Label
     Friend WithEvents numHeure As NumericUpDown
     Friend WithEvents img_Carte As PictureBox
+    Friend WithEvents cbStation As ComboBox
+    Friend WithEvents lbStrasbourg As Label
+    Friend WithEvents grpLog As GroupBox
+    Friend WithEvents btClearLog As Button
+    Friend WithEvents lsbLog As ListBox
 End Class
