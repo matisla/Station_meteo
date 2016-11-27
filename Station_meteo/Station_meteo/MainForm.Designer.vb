@@ -23,42 +23,183 @@ Partial Class MainForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-        Me.Menu = New System.Windows.Forms.MenuStrip()
-        Me.FichierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.img_Carte = New System.Windows.Forms.PictureBox()
+        Me.mainMenu = New System.Windows.Forms.MenuStrip()
+        Me.FichierMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.grpStation = New System.Windows.Forms.GroupBox()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
-        Me.tbForceVent = New System.Windows.Forms.TextBox()
-        Me.lbForceVent = New System.Windows.Forms.Label()
-        Me.tbDirVent = New System.Windows.Forms.TextBox()
-        Me.lbDirVent = New System.Windows.Forms.Label()
-        Me.tbPression = New System.Windows.Forms.TextBox()
-        Me.lbPression = New System.Windows.Forms.Label()
+        Me.grpData = New System.Windows.Forms.GroupBox()
         Me.tbTemp = New System.Windows.Forms.TextBox()
         Me.lbTemp = New System.Windows.Forms.Label()
-        Me.tbDate = New System.Windows.Forms.TextBox()
-        Me.lbDate = New System.Windows.Forms.Label()
-        Me.Menu.SuspendLayout()
-        CType(Me.img_Carte, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tbForceVent = New System.Windows.Forms.TextBox()
+        Me.lbPression = New System.Windows.Forms.Label()
+        Me.lbForceVent = New System.Windows.Forms.Label()
+        Me.tbPression = New System.Windows.Forms.TextBox()
+        Me.tbDirVent = New System.Windows.Forms.TextBox()
+        Me.lbDirVent = New System.Windows.Forms.Label()
+        Me.grpDateTime = New System.Windows.Forms.GroupBox()
+        Me.calendrier = New System.Windows.Forms.MonthCalendar()
+        Me.lbHeure = New System.Windows.Forms.Label()
+        Me.numHeure = New System.Windows.Forms.NumericUpDown()
+        Me.img_Carte = New System.Windows.Forms.PictureBox()
+        Me.mainMenu.SuspendLayout()
         Me.grpStation.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpData.SuspendLayout()
+        Me.grpDateTime.SuspendLayout()
+        CType(Me.numHeure, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.img_Carte, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Menu
+        'mainMenu
         '
-        Me.Menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierToolStripMenuItem})
-        Me.Menu.Location = New System.Drawing.Point(0, 0)
-        Me.Menu.Name = "Menu"
-        Me.Menu.Size = New System.Drawing.Size(1204, 24)
-        Me.Menu.TabIndex = 0
-        Me.Menu.Text = "MenuStrip1"
+        Me.mainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierMenu})
+        Me.mainMenu.Location = New System.Drawing.Point(0, 0)
+        Me.mainMenu.Name = "mainMenu"
+        Me.mainMenu.Size = New System.Drawing.Size(1046, 24)
+        Me.mainMenu.TabIndex = 0
+        Me.mainMenu.Text = "MenuStrip1"
         '
-        'FichierToolStripMenuItem
+        'FichierMenu
         '
-        Me.FichierToolStripMenuItem.Name = "FichierToolStripMenuItem"
-        Me.FichierToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
-        Me.FichierToolStripMenuItem.Text = "Fichier"
+        Me.FichierMenu.Name = "FichierMenu"
+        Me.FichierMenu.Size = New System.Drawing.Size(54, 20)
+        Me.FichierMenu.Text = "Fichier"
+        '
+        'grpStation
+        '
+        Me.grpStation.Controls.Add(Me.grpData)
+        Me.grpStation.Controls.Add(Me.grpDateTime)
+        Me.grpStation.Location = New System.Drawing.Point(763, 27)
+        Me.grpStation.MaximumSize = New System.Drawing.Size(275, 0)
+        Me.grpStation.MinimumSize = New System.Drawing.Size(275, 404)
+        Me.grpStation.Name = "grpStation"
+        Me.grpStation.Size = New System.Drawing.Size(275, 404)
+        Me.grpStation.TabIndex = 4
+        Me.grpStation.TabStop = False
+        Me.grpStation.Text = "Station"
+        '
+        'grpData
+        '
+        Me.grpData.AutoSize = True
+        Me.grpData.Controls.Add(Me.tbTemp)
+        Me.grpData.Controls.Add(Me.lbTemp)
+        Me.grpData.Controls.Add(Me.tbForceVent)
+        Me.grpData.Controls.Add(Me.lbPression)
+        Me.grpData.Controls.Add(Me.lbForceVent)
+        Me.grpData.Controls.Add(Me.tbPression)
+        Me.grpData.Controls.Add(Me.tbDirVent)
+        Me.grpData.Controls.Add(Me.lbDirVent)
+        Me.grpData.Location = New System.Drawing.Point(12, 19)
+        Me.grpData.Name = "grpData"
+        Me.grpData.Padding = New System.Windows.Forms.Padding(3, 9, 3, 3)
+        Me.grpData.Size = New System.Drawing.Size(251, 136)
+        Me.grpData.TabIndex = 14
+        Me.grpData.TabStop = False
+        Me.grpData.Text = "Données"
+        '
+        'tbTemp
+        '
+        Me.tbTemp.Location = New System.Drawing.Point(110, 19)
+        Me.tbTemp.Name = "tbTemp"
+        Me.tbTemp.Size = New System.Drawing.Size(135, 20)
+        Me.tbTemp.TabIndex = 3
+        Me.tbTemp.Text = "xx.x °C"
+        Me.tbTemp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lbTemp
+        '
+        Me.lbTemp.AutoSize = True
+        Me.lbTemp.Location = New System.Drawing.Point(6, 22)
+        Me.lbTemp.Name = "lbTemp"
+        Me.lbTemp.Size = New System.Drawing.Size(67, 13)
+        Me.lbTemp.TabIndex = 2
+        Me.lbTemp.Text = "Température"
+        '
+        'tbForceVent
+        '
+        Me.tbForceVent.Location = New System.Drawing.Point(110, 97)
+        Me.tbForceVent.Name = "tbForceVent"
+        Me.tbForceVent.Size = New System.Drawing.Size(135, 20)
+        Me.tbForceVent.TabIndex = 9
+        Me.tbForceVent.Text = "xx.x m/s"
+        Me.tbForceVent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lbPression
+        '
+        Me.lbPression.AutoSize = True
+        Me.lbPression.Location = New System.Drawing.Point(6, 48)
+        Me.lbPression.Name = "lbPression"
+        Me.lbPression.Size = New System.Drawing.Size(47, 13)
+        Me.lbPression.TabIndex = 4
+        Me.lbPression.Text = "Pression"
+        '
+        'lbForceVent
+        '
+        Me.lbForceVent.AutoSize = True
+        Me.lbForceVent.Location = New System.Drawing.Point(6, 100)
+        Me.lbForceVent.Name = "lbForceVent"
+        Me.lbForceVent.Size = New System.Drawing.Size(73, 13)
+        Me.lbForceVent.TabIndex = 8
+        Me.lbForceVent.Text = "Force du vent"
+        '
+        'tbPression
+        '
+        Me.tbPression.Location = New System.Drawing.Point(110, 45)
+        Me.tbPression.Name = "tbPression"
+        Me.tbPression.Size = New System.Drawing.Size(135, 20)
+        Me.tbPression.TabIndex = 5
+        Me.tbPression.Text = "xxxx.x hpa"
+        Me.tbPression.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'tbDirVent
+        '
+        Me.tbDirVent.Location = New System.Drawing.Point(110, 71)
+        Me.tbDirVent.Name = "tbDirVent"
+        Me.tbDirVent.Size = New System.Drawing.Size(135, 20)
+        Me.tbDirVent.TabIndex = 7
+        Me.tbDirVent.Text = "xxxx.x hpa"
+        Me.tbDirVent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lbDirVent
+        '
+        Me.lbDirVent.AutoSize = True
+        Me.lbDirVent.Location = New System.Drawing.Point(6, 74)
+        Me.lbDirVent.Name = "lbDirVent"
+        Me.lbDirVent.Size = New System.Drawing.Size(88, 13)
+        Me.lbDirVent.TabIndex = 6
+        Me.lbDirVent.Text = "Direction du vent"
+        '
+        'grpDateTime
+        '
+        Me.grpDateTime.Controls.Add(Me.calendrier)
+        Me.grpDateTime.Controls.Add(Me.lbHeure)
+        Me.grpDateTime.Controls.Add(Me.numHeure)
+        Me.grpDateTime.Location = New System.Drawing.Point(12, 161)
+        Me.grpDateTime.Name = "grpDateTime"
+        Me.grpDateTime.Size = New System.Drawing.Size(251, 232)
+        Me.grpDateTime.TabIndex = 13
+        Me.grpDateTime.TabStop = False
+        Me.grpDateTime.Text = "Date et heure"
+        '
+        'calendrier
+        '
+        Me.calendrier.Location = New System.Drawing.Point(12, 25)
+        Me.calendrier.Name = "calendrier"
+        Me.calendrier.TabIndex = 10
+        '
+        'lbHeure
+        '
+        Me.lbHeure.AutoSize = True
+        Me.lbHeure.Location = New System.Drawing.Point(9, 196)
+        Me.lbHeure.Name = "lbHeure"
+        Me.lbHeure.Size = New System.Drawing.Size(68, 13)
+        Me.lbHeure.TabIndex = 0
+        Me.lbHeure.Text = "Date - Heure"
+        '
+        'numHeure
+        '
+        Me.numHeure.Location = New System.Drawing.Point(160, 194)
+        Me.numHeure.Name = "numHeure"
+        Me.numHeure.Size = New System.Drawing.Size(79, 20)
+        Me.numHeure.TabIndex = 11
         '
         'img_Carte
         '
@@ -67,174 +208,54 @@ Partial Class MainForm
         Me.img_Carte.Name = "img_Carte"
         Me.img_Carte.Size = New System.Drawing.Size(745, 745)
         Me.img_Carte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.img_Carte.TabIndex = 1
+        Me.img_Carte.TabIndex = 6
         Me.img_Carte.TabStop = False
-        '
-        'grpStation
-        '
-        Me.grpStation.Controls.Add(Me.NumericUpDown1)
-        Me.grpStation.Controls.Add(Me.MonthCalendar1)
-        Me.grpStation.Controls.Add(Me.tbForceVent)
-        Me.grpStation.Controls.Add(Me.lbForceVent)
-        Me.grpStation.Controls.Add(Me.tbDirVent)
-        Me.grpStation.Controls.Add(Me.lbDirVent)
-        Me.grpStation.Controls.Add(Me.tbPression)
-        Me.grpStation.Controls.Add(Me.lbPression)
-        Me.grpStation.Controls.Add(Me.tbTemp)
-        Me.grpStation.Controls.Add(Me.lbTemp)
-        Me.grpStation.Controls.Add(Me.tbDate)
-        Me.grpStation.Controls.Add(Me.lbDate)
-        Me.grpStation.Dock = System.Windows.Forms.DockStyle.Right
-        Me.grpStation.Location = New System.Drawing.Point(953, 24)
-        Me.grpStation.Name = "grpStation"
-        Me.grpStation.Size = New System.Drawing.Size(251, 759)
-        Me.grpStation.TabIndex = 2
-        Me.grpStation.TabStop = False
-        Me.grpStation.Text = "Station"
-        '
-        'NumericUpDown1
-        '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(185, 195)
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(53, 20)
-        Me.NumericUpDown1.TabIndex = 11
-        '
-        'MonthCalendar1
-        '
-        Me.MonthCalendar1.Location = New System.Drawing.Point(12, 227)
-        Me.MonthCalendar1.Name = "MonthCalendar1"
-        Me.MonthCalendar1.TabIndex = 10
-        '
-        'tbForceVent
-        '
-        Me.tbForceVent.Location = New System.Drawing.Point(117, 121)
-        Me.tbForceVent.Name = "tbForceVent"
-        Me.tbForceVent.Size = New System.Drawing.Size(79, 20)
-        Me.tbForceVent.TabIndex = 9
-        Me.tbForceVent.Text = "xx.x m/s"
-        Me.tbForceVent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lbForceVent
-        '
-        Me.lbForceVent.AutoSize = True
-        Me.lbForceVent.Location = New System.Drawing.Point(7, 124)
-        Me.lbForceVent.Name = "lbForceVent"
-        Me.lbForceVent.Size = New System.Drawing.Size(73, 13)
-        Me.lbForceVent.TabIndex = 8
-        Me.lbForceVent.Text = "Force du vent"
-        '
-        'tbDirVent
-        '
-        Me.tbDirVent.Location = New System.Drawing.Point(117, 95)
-        Me.tbDirVent.Name = "tbDirVent"
-        Me.tbDirVent.Size = New System.Drawing.Size(79, 20)
-        Me.tbDirVent.TabIndex = 7
-        Me.tbDirVent.Text = "xxxx.x hpa"
-        Me.tbDirVent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lbDirVent
-        '
-        Me.lbDirVent.AutoSize = True
-        Me.lbDirVent.Location = New System.Drawing.Point(7, 98)
-        Me.lbDirVent.Name = "lbDirVent"
-        Me.lbDirVent.Size = New System.Drawing.Size(88, 13)
-        Me.lbDirVent.TabIndex = 6
-        Me.lbDirVent.Text = "Direction du vent"
-        '
-        'tbPression
-        '
-        Me.tbPression.Location = New System.Drawing.Point(117, 69)
-        Me.tbPression.Name = "tbPression"
-        Me.tbPression.Size = New System.Drawing.Size(79, 20)
-        Me.tbPression.TabIndex = 5
-        Me.tbPression.Text = "xxxx.x hpa"
-        Me.tbPression.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lbPression
-        '
-        Me.lbPression.AutoSize = True
-        Me.lbPression.Location = New System.Drawing.Point(7, 72)
-        Me.lbPression.Name = "lbPression"
-        Me.lbPression.Size = New System.Drawing.Size(47, 13)
-        Me.lbPression.TabIndex = 4
-        Me.lbPression.Text = "Pression"
-        '
-        'tbTemp
-        '
-        Me.tbTemp.Location = New System.Drawing.Point(117, 43)
-        Me.tbTemp.Name = "tbTemp"
-        Me.tbTemp.Size = New System.Drawing.Size(79, 20)
-        Me.tbTemp.TabIndex = 3
-        Me.tbTemp.Text = "xx.x °C"
-        Me.tbTemp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lbTemp
-        '
-        Me.lbTemp.AutoSize = True
-        Me.lbTemp.Location = New System.Drawing.Point(7, 46)
-        Me.lbTemp.Name = "lbTemp"
-        Me.lbTemp.Size = New System.Drawing.Size(67, 13)
-        Me.lbTemp.TabIndex = 2
-        Me.lbTemp.Text = "Température"
-        '
-        'tbDate
-        '
-        Me.tbDate.Location = New System.Drawing.Point(117, 17)
-        Me.tbDate.Name = "tbDate"
-        Me.tbDate.Size = New System.Drawing.Size(152, 20)
-        Me.tbDate.TabIndex = 1
-        Me.tbDate.Text = "xx/xx/20xx - hh:mm:ss"
-        Me.tbDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lbDate
-        '
-        Me.lbDate.AutoSize = True
-        Me.lbDate.Location = New System.Drawing.Point(7, 20)
-        Me.lbDate.Name = "lbDate"
-        Me.lbDate.Size = New System.Drawing.Size(68, 13)
-        Me.lbDate.TabIndex = 0
-        Me.lbDate.Text = "Date - Heure"
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1204, 783)
-        Me.Controls.Add(Me.grpStation)
+        Me.ClientSize = New System.Drawing.Size(1046, 783)
         Me.Controls.Add(Me.img_Carte)
-        Me.Controls.Add(Me.Menu)
-        Me.MainMenuStrip = Me.Menu
-        Me.MaximumSize = New System.Drawing.Size(1220, 822)
-        Me.MinimumSize = New System.Drawing.Size(1220, 822)
+        Me.Controls.Add(Me.grpStation)
+        Me.Controls.Add(Me.mainMenu)
+        Me.MainMenuStrip = Me.mainMenu
+        Me.MaximumSize = New System.Drawing.Size(1062, 822)
+        Me.MinimumSize = New System.Drawing.Size(1062, 822)
         Me.Name = "MainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Station Météo"
         Me.TopMost = True
-        Me.Menu.ResumeLayout(False)
-        Me.Menu.PerformLayout()
-        CType(Me.img_Carte, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.mainMenu.ResumeLayout(False)
+        Me.mainMenu.PerformLayout()
         Me.grpStation.ResumeLayout(False)
         Me.grpStation.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpData.ResumeLayout(False)
+        Me.grpData.PerformLayout()
+        Me.grpDateTime.ResumeLayout(False)
+        Me.grpDateTime.PerformLayout()
+        CType(Me.numHeure, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.img_Carte, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents Menu As MenuStrip
-    Friend WithEvents FichierToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents img_Carte As PictureBox
+    Friend WithEvents mainMenu As MenuStrip
+    Friend WithEvents FichierMenu As ToolStripMenuItem
     Friend WithEvents grpStation As GroupBox
-    Friend WithEvents tbPression As TextBox
-    Friend WithEvents lbPression As Label
+    Friend WithEvents grpData As GroupBox
     Friend WithEvents tbTemp As TextBox
     Friend WithEvents lbTemp As Label
-    Friend WithEvents tbDate As TextBox
-    Friend WithEvents lbDate As Label
     Friend WithEvents tbForceVent As TextBox
+    Friend WithEvents lbPression As Label
     Friend WithEvents lbForceVent As Label
+    Friend WithEvents tbPression As TextBox
     Friend WithEvents tbDirVent As TextBox
     Friend WithEvents lbDirVent As Label
-    Friend WithEvents MonthCalendar1 As MonthCalendar
-    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents grpDateTime As GroupBox
+    Friend WithEvents calendrier As MonthCalendar
+    Friend WithEvents lbHeure As Label
+    Friend WithEvents numHeure As NumericUpDown
+    Friend WithEvents img_Carte As PictureBox
 End Class
