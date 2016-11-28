@@ -22,6 +22,7 @@ Partial Class MainForm
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.mainMenu = New System.Windows.Forms.MenuStrip()
         Me.FichierMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -43,8 +44,9 @@ Partial Class MainForm
         Me.img_Carte = New System.Windows.Forms.PictureBox()
         Me.lbStrasbourg = New System.Windows.Forms.Label()
         Me.grpLog = New System.Windows.Forms.GroupBox()
-        Me.lsbLog = New System.Windows.Forms.ListBox()
         Me.btClearLog = New System.Windows.Forms.Button()
+        Me.lsbLog = New System.Windows.Forms.ListBox()
+        Me.ttMap = New System.Windows.Forms.ToolTip(Me.components)
         Me.mainMenu.SuspendLayout()
         Me.grpStation.SuspendLayout()
         Me.grpData.SuspendLayout()
@@ -174,7 +176,7 @@ Partial Class MainForm
         Me.tbDirVent.ReadOnly = True
         Me.tbDirVent.Size = New System.Drawing.Size(135, 20)
         Me.tbDirVent.TabIndex = 7
-        Me.tbDirVent.Text = "xxxx.x hpa"
+        Me.tbDirVent.Text = "xxx"
         Me.tbDirVent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lbDirVent
@@ -202,8 +204,10 @@ Partial Class MainForm
         '
         Me.calendrier.Location = New System.Drawing.Point(12, 25)
         Me.calendrier.MaxDate = New Date(2012, 11, 12, 0, 0, 0, 0)
+        Me.calendrier.MaxSelectionCount = 1
         Me.calendrier.MinDate = New Date(2012, 10, 19, 0, 0, 0, 0)
         Me.calendrier.Name = "calendrier"
+        Me.calendrier.ShowToday = False
         Me.calendrier.TabIndex = 10
         '
         'lbHeure
@@ -222,16 +226,20 @@ Partial Class MainForm
         Me.numHeure.Name = "numHeure"
         Me.numHeure.Size = New System.Drawing.Size(79, 20)
         Me.numHeure.TabIndex = 11
+        Me.numHeure.Value = New Decimal(New Integer() {6, 0, 0, 0})
         '
         'img_Carte
         '
+        Me.img_Carte.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.img_Carte.Image = CType(resources.GetObject("img_Carte.Image"), System.Drawing.Image)
         Me.img_Carte.Location = New System.Drawing.Point(12, 27)
         Me.img_Carte.Name = "img_Carte"
-        Me.img_Carte.Size = New System.Drawing.Size(745, 745)
+        Me.img_Carte.Size = New System.Drawing.Size(747, 747)
         Me.img_Carte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.img_Carte.TabIndex = 6
         Me.img_Carte.TabStop = False
+        Me.ttMap.SetToolTip(Me.img_Carte, "Pour choisir une ville cliquez sur celle-ci, ou selectionnez la directement dans " &
+        "la liste déroulante")
         '
         'lbStrasbourg
         '
@@ -250,10 +258,20 @@ Partial Class MainForm
         Me.grpLog.Controls.Add(Me.lsbLog)
         Me.grpLog.Location = New System.Drawing.Point(763, 461)
         Me.grpLog.Name = "grpLog"
-        Me.grpLog.Size = New System.Drawing.Size(275, 311)
+        Me.grpLog.Size = New System.Drawing.Size(275, 313)
         Me.grpLog.TabIndex = 8
         Me.grpLog.TabStop = False
         Me.grpLog.Text = "Messages"
+        '
+        'btClearLog
+        '
+        Me.btClearLog.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.btClearLog.Location = New System.Drawing.Point(3, 287)
+        Me.btClearLog.Name = "btClearLog"
+        Me.btClearLog.Size = New System.Drawing.Size(269, 23)
+        Me.btClearLog.TabIndex = 1
+        Me.btClearLog.Text = "vider"
+        Me.btClearLog.UseVisualStyleBackColor = True
         '
         'lsbLog
         '
@@ -261,18 +279,12 @@ Partial Class MainForm
         Me.lsbLog.FormattingEnabled = True
         Me.lsbLog.Location = New System.Drawing.Point(3, 16)
         Me.lsbLog.Name = "lsbLog"
-        Me.lsbLog.Size = New System.Drawing.Size(269, 290)
+        Me.lsbLog.Size = New System.Drawing.Size(269, 264)
         Me.lsbLog.TabIndex = 0
         '
-        'btClearLog
+        'ttMap
         '
-        Me.btClearLog.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.btClearLog.Location = New System.Drawing.Point(3, 285)
-        Me.btClearLog.Name = "btClearLog"
-        Me.btClearLog.Size = New System.Drawing.Size(269, 23)
-        Me.btClearLog.TabIndex = 1
-        Me.btClearLog.Text = "vider"
-        Me.btClearLog.UseVisualStyleBackColor = True
+        Me.ttMap.ToolTipTitle = "Gestion de la carte"
         '
         'MainForm
         '
@@ -329,4 +341,5 @@ Partial Class MainForm
     Friend WithEvents grpLog As GroupBox
     Friend WithEvents btClearLog As Button
     Friend WithEvents lsbLog As ListBox
+    Friend WithEvents ttMap As ToolTip
 End Class
