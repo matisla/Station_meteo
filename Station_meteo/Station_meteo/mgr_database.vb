@@ -26,7 +26,7 @@ Public Class mgr_database
         Dim DataTab As DataTable
         Dim DateMesure As String = ""
 
-        Requete = "SELECT indicatif FROM Station WHERE nom LIKE " & donnees.station
+        Requete = "SELECT indicatif FROM Station WHERE nom LIKE " & donnees.ville
         m_DataAdaptMySql = New MySqlDataAdapter(Requete, m_BaseSql)
         m_CmdBuilderMySql = New MySqlCommandBuilder(m_DataAdaptMySql)
         DataTab = New DataTable
