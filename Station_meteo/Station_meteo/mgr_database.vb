@@ -14,7 +14,7 @@
 
     Public Function getData(ByRef donnees As data)
 
-        Console.WriteLine(donnees.station & " le " & donnees.jour & " à " & donnees.heure & "h")
+        Console.WriteLine(donnees.ville & " le " & donnees.jour & " à " & donnees.heure & "h")
 
         donnees.temperature = 24.2
         donnees.pression = 102400
@@ -30,6 +30,7 @@
 
         villes.Add("Ville 1")
         villes.Add("Ville 2")
+        villes.Add("Strasbourg-Entzheim")
 
         Return villes
 
