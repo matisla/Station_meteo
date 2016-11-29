@@ -10,6 +10,7 @@ Public Structure data
     Public pression As Integer
     Public dirVent As String
     Public forceVent As Double
+    Public descriptionTemps As String
 
 End Structure
 
