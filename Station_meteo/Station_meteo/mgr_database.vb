@@ -42,7 +42,7 @@ Public Class mgr_database
         End If
 
         Requete = "SELECT indicatif FROM Station WHERE nom LIKE """ & donnees.station & """"
-            m_DataAdaptMySql = New MySqlDataAdapter(Requete, m_BaseSql)
+        m_DataAdaptMySql = New MySqlDataAdapter(Requete, m_BaseSql)
         m_CmdBuilderMySql = New MySqlCommandBuilder(m_DataAdaptMySql)
         DataTab = New DataTable
         m_DataAdaptMySql.Fill(DataTab)

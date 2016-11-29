@@ -2,9 +2,9 @@
 
 Public Structure data
 
-    Public station As String
-    Public jour As String
-    Public heure As Integer
+    Public ville As String
+    Public jour As String   ' aaaa/mm/jj
+    Public heure As Integer ' 0-23
 
     Public temperature As Double
     Public pression As Integer
@@ -36,14 +36,21 @@ Public Class MainForm
 
     End Sub
 
-    Sub updateData()
+    Sub updateData(Optional ByVal ville As String = Nothing)
 
         If Me.database IsNot Nothing Then
 
             Dim donnees As data = New data()
 
-            donnees.station = Me.cbStation.SelectedItem
-            donnees.jour = Me.calendrier.SelectionRange.Start.ToShortDateString()
+            If ville <> Nothing Then
+                donnees.ville = ville
+            ElseIf Me.cbStation.SelectedText = "" Then
+                donnees.ville = "Strasbourg-Entzheim"
+            Else
+                donnees.ville = Me.cbStation.SelectedText
+            End If
+
+            donnees.jour = Me.calendrier.SelectionRange.Start.ToString("yyyy-MM-dd")
             donnees.heure = Me.numHeure.Value
 
             Me.database.getData(donnees)
@@ -53,15 +60,13 @@ Public Class MainForm
             Me.tbDirVent.Text = donnees.dirVent
             Me.tbForceVent.Text = (donnees.forceVent).ToString() & " m/s"
 
+            Console.WriteLine(donnees.ville)
+            Me.cbStation.SelectedItem = donnees.ville
         End If
-
 
     End Sub
 
-
     Private Sub calendrier_DateChanged(sender As Object, e As DateRangeEventArgs) Handles calendrier.DateChanged
-        ' code à intéger pour gérer l'événement changement de date
-        ' -> doit mettre à jour les données
 
         If Me.calendrier.SelectionRange.Start.ToShortDateString() = "12/11/2012" Then
             Me.numHeure.Maximum = 6
@@ -81,38 +86,69 @@ Public Class MainForm
         End If
 
         Me.updateData()
-
-        Me.lsbLog.Items.Add("Changement de date")
-    End Sub
-
-    Private Sub lbStrasbourg_Click(sender As Object, e As EventArgs) Handles lbStrasbourg.Click
-        ' code à intéger pour gérer l'événement click sur une ville
-        ' -> doit mettre à jour les données
-
-        Me.updateData()
-
-        Me.lsbLog.Items.Add("Chargement des données de Strasbourg")
     End Sub
 
     Private Sub numHeure_ValueChanged(sender As Object, e As EventArgs) Handles numHeure.ValueChanged
-        ' code à intéger pour gérer l'événement changement d'heure
-        ' -> doit mettre à jour les données
-
         Me.updateData()
-
-        Me.lsbLog.Items.Add("Changement de l'heure")
     End Sub
 
     Private Sub cbStation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbStation.SelectedIndexChanged
-        ' code à intéger pour gérer l'événement selection ville
-        ' -> doit mettre à jour les données
-
         Me.updateData()
-
-        Me.lsbLog.Items.Add("Changement de ville")
     End Sub
 
     Private Sub btClearLog_Click(sender As Object, e As EventArgs) Handles btClearLog.Click
         Me.lsbLog.Items.Clear()
+    End Sub
+
+    Private Sub lbStrasbourg_Click(sender As Object, e As EventArgs) Handles lbStrasbourg.Click
+        Me.updateData("Strasbourg-Entzheim")
+    End Sub
+
+    Private Sub lbOrly_Click(sender As Object, e As EventArgs) Handles lbOrly.Click
+        Me.updateData("Orly")
+    End Sub
+
+    Private Sub lbNancy_Click(sender As Object, e As EventArgs) Handles lbNancy.Click
+        Me.updateData("Nancy-Ochey")
+    End Sub
+
+    Private Sub lbLyon_Click(sender As Object, e As EventArgs) Handles lbLyon.Click
+        Me.updateData("Lyon-Saint Exupery")
+    End Sub
+
+    Private Sub lbMontpellier_Click(sender As Object, e As EventArgs) Handles lbMontpellier.Click
+        Me.updateData("Montpellier")
+    End Sub
+
+    Private Sub lbClermont_Click(sender As Object, e As EventArgs) Handles lbClermont.Click
+        Me.updateData("Clermont-Ferrand")
+    End Sub
+
+    Private Sub lbToulouse_Click(sender As Object, e As EventArgs) Handles lbToulouse.Click
+        Me.updateData("Toulouse-Blagnac")
+    End Sub
+
+    Private Sub lbBordeaux_Click(sender As Object, e As EventArgs) Handles lbBordeaux.Click
+        Me.updateData("Bordeaux-Merignac")
+    End Sub
+
+    Private Sub lbTours_Click(sender As Object, e As EventArgs) Handles lbTours.Click
+        Me.updateData("Tours")
+    End Sub
+
+    Private Sub lbRennes_Click(sender As Object, e As EventArgs) Handles lbRennes.Click
+        Me.updateData("Rennes-Saint Jacques")
+    End Sub
+
+    Private Sub lbCaen_Click(sender As Object, e As EventArgs) Handles lbCaen.Click
+        Me.updateData("Caen-Carpiquet")
+    End Sub
+
+    Private Sub lbLille_Click(sender As Object, e As EventArgs) Handles lbLille.Click
+        Me.updateData("Lille-Lesquin")
+    End Sub
+
+    Private Sub lbTroyes_Click(sender As Object, e As EventArgs) Handles lbTroyes.Click
+        Me.updateData("Troyes-Barberey")
     End Sub
 End Class
