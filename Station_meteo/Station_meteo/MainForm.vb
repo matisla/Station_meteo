@@ -3,8 +3,8 @@
 Public Structure data
 
     Public ville As String
-    Public jour As String
-    Public heure As Integer
+    Public jour As String   ' aaaa/mm/jj
+    Public heure As Integer ' 0-23
 
     Public temperature As Double
     Public pression As Integer
@@ -49,7 +49,7 @@ Public Class MainForm
                 donnees.ville = Me.cbStation.SelectedText
             End If
 
-            donnees.jour = Me.calendrier.SelectionRange.Start.ToShortDateString()
+            donnees.jour = Me.calendrier.SelectionRange.Start.ToString("yyyy-MM-dd")
             donnees.heure = Me.numHeure.Value
 
             Me.database.getData(donnees)
