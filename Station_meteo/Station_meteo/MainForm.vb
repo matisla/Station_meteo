@@ -3,7 +3,7 @@
 Public Structure data
 
     Public ville As String
-    Public jour As String   ' aaaa/mm/jj
+    Public jour As String   ' yyyy-mm-dd
     Public heure As Integer ' 0-23
 
     Public temperature As Double
@@ -32,18 +32,21 @@ Public Class MainForm
 
         ' Mise à jour de la liste des villes disponibles
 
+        Me.setDefaultValue()
+
         If Me.database.isConnected = True Then
 
             For Each ville In Me.database.getAllVilles()
                 Me.cbStation.Items.Add(ville)
             Next ville
 
+            Me.cbStation.Items.Add("")
+
         End If
 
     End Sub
 
     Sub updateData()
-        Dim ville As String
 
         If Me.database IsNot Nothing Then
 
@@ -51,10 +54,11 @@ Public Class MainForm
 
                 Dim donnees As data = New data()
 
-                If c_ville <> Nothing Then
-                    ville = Me.c_ville
+                If c_ville <> Nothing And
+                   c_ville <> "" Then
+                    donnees.ville = Me.c_ville
                 Else
-                    ville = "Strasbourg-Entzheim"
+                    donnees.ville = "Strasbourg-Entzheim"
                 End If
 
                 donnees.jour = Me.calendrier.SelectionRange.Start.ToString("yyyy-MM-dd")
@@ -62,15 +66,30 @@ Public Class MainForm
 
                 Me.database.getData(donnees)
 
-                Me.tbTemp.Text = (donnees.temperature).ToString() & " °C"
-                Me.tbPression.Text = (donnees.pression / 100).ToString() & " hpa"
-                Me.tbDirVent.Text = donnees.dirVent
-                Me.tbForceVent.Text = (donnees.forceVent).ToString() & " m/s"
+                If donnees.pression < 10 Then
+
+                    Me.setDefaultValue()
+
+                Else
+
+                    Me.tbTemp.Text = (donnees.temperature).ToString() & " °C"
+                    Me.tbPression.Text = (donnees.pression / 100).ToString() & " hpa"
+                    Me.tbDirVent.Text = donnees.dirVent
+                    Me.tbForceVent.Text = (donnees.forceVent).ToString() & " m/s"
+
+                End If
 
                 Me.grpStation.Text = "Station - " & donnees.ville
-
+                Me.cbStation.SelectedItem = ""
             End If
         End If
+    End Sub
+
+    Private Sub setDefaultValue()
+        Me.tbTemp.Text = "- °C"
+        Me.tbPression.Text = "- hpa"
+        Me.tbDirVent.Text = " - "
+        Me.tbForceVent.Text = "- m/s"
     End Sub
 
     Private Sub calendrier_DateChanged(sender As Object, e As DateRangeEventArgs) Handles calendrier.DateChanged
@@ -93,17 +112,20 @@ Public Class MainForm
         End If
 
         Me.updateData()
+
     End Sub
 
     Private Sub numHeure_ValueChanged(sender As Object, e As EventArgs) Handles numHeure.ValueChanged
-        Me.c_ville = Me.cbStation.SelectedItem
         Me.updateData()
 
     End Sub
 
     Private Sub cbStation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbStation.SelectedIndexChanged
-        Me.c_ville = Me.cbStation.SelectedItem
-        Me.updateData()
+        If Me.cbStation.SelectedItem <> "" Then
+            Me.c_ville = Me.cbStation.SelectedItem
+            Me.updateData()
+        End If
+
     End Sub
 
 

@@ -82,6 +82,7 @@ Partial Class MainForm
         Me.cbStation.Location = New System.Drawing.Point(12, 19)
         Me.cbStation.Name = "cbStation"
         Me.cbStation.Size = New System.Drawing.Size(251, 21)
+        Me.cbStation.Sorted = True
         Me.cbStation.TabIndex = 15
         '
         'grpData
